@@ -9,12 +9,16 @@
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "knex:migrate": "knex migrate:latest",
     "dev": "ts-node-dev --inspect=0.0.0.0:9229 --watch --respawn --transpile-only --ignore-watch node_modules -r tsconfig-paths/register ./src/server.ts",
-    "predev": "npm run knex:migrate"
+    "predev": "npm run knex:migrate",
+    "test": "jest",
+    "test:clear": "jest --no-cache --clearCache",
+    "test:unit": "npm run test:clear && jest -c jest.config-unit.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@jest/globals": "^29.3.1",
     "@types/bunyan": "^1.8.8",
     "@types/bunyan-format": "^0.2.5",
     "@types/compression": "^1.7.2",
@@ -32,7 +36,9 @@
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.3.1",
     "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.1.0",
     "typescript": "^4.8.4"
@@ -52,5 +58,8 @@
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "pg": "^8.8.0"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   }
 }

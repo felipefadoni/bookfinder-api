@@ -1,16 +1,8 @@
 import { parseISO } from 'date-fns';
+
+import { CreateBookServiceDTO } from '../dto';
 import { BookEntity } from '../entity';
-
 import { createBookRepository } from '../repositories';
-
-type Props = {
-  title: string;
-  author: string;
-  description: string;
-  image: string;
-  link: string;
-  publishedDate: string;
-};
 
 export default async function createBookService({
   author,
@@ -19,7 +11,7 @@ export default async function createBookService({
   link,
   publishedDate,
   title
-}: Props): Promise<BookEntity> {
+}: CreateBookServiceDTO): Promise<BookEntity> {
   const publishedDateFormatted = parseISO(publishedDate);
 
   const newBook = await createBookRepository({

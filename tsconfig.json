@@ -22,7 +22,8 @@
     "target": "es2021",
     "types": ["node"],
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@/tests/*": ["tests/*"]
     }
   },
   "exclude": ["node_modules", "dist", "tests"],

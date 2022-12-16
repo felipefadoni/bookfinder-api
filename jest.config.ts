@@ -1,11 +1,8 @@
 import type { Config } from 'jest';
 
 const config: Config = {
-  verbose: true,
+  verbose: false,
   preset: 'ts-jest',
-  transform: {
-    '^.+\\.(ts)$': 'ts-jest'
-  },
   testEnvironment: 'node',
   roots: ['<rootDir>'],
   collectCoverage: true,
@@ -14,12 +11,6 @@ const config: Config = {
   resetMocks: true,
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1'
-  },
-  globals: {
-    'ts-jest': {
-      tsConfigFile: 'tsconfig.json',
-      enableTsDiagnostics: true
-    }
   }
 };
 

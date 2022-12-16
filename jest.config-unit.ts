@@ -1,23 +1,13 @@
-import type { Config } from 'jest';
+import config from './jest.config';
 
-const config: Config = {
-  verbose: true,
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  roots: ['<rootDir>'],
-  collectCoverage: true,
-  coverageProvider: 'v8',
-  clearMocks: true,
-  resetMocks: true,
-  collectCoverageFrom: [
-    '<rootDir>/src/domain/**/*.ts',
-    '!<rootDir>/src/domain/**/repositories/*.ts',
-    '!<rootDir>/src/domain/**/entity.ts',
-    '!<rootDir>/src/domain/**/index.ts'
-  ],
-  moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/$1'
-  }
-};
+config.displayName = 'test-unit';
+config.collectCoverageFrom = [
+  '<rootDir>/src/app/controllers/**/**/validator/*.ts',
+  '<rootDir>/src/domain/**/*.ts',
+  '!<rootDir>/src/app/controllers/**/**/validator/index.ts',
+  '!<rootDir>/src/domain/**/repositories/*.ts',
+  '!<rootDir>/src/domain/**/entity.ts',
+  '!<rootDir>/src/domain/**/index.ts'
+];
 
 export default config;

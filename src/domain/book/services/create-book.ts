@@ -1,3 +1,5 @@
+import { createBookValidator } from '@/app/controllers/v1/book/validator';
+import AppError from '@/shared/errors/app-errors';
 import { parseISO } from 'date-fns';
 
 import { CreateBookServiceDTO } from '../dto';
@@ -12,6 +14,16 @@ export default async function createBookService({
   publishedDate,
   title
 }: CreateBookServiceDTO): Promise<BookEntity> {
+  const { error } = createBookValidator.validate({
+    author,
+    description,
+    link,
+    publishedDate,
+    title
+  });
+
+  if (error) throw new AppError(error.message, 400);
+
   const publishedDateFormatted = parseISO(publishedDate);
 
   const newBook = await createBookRepository({
